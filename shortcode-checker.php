@@ -36,7 +36,7 @@ License: GPL2
 //	print_r($troubleVariable); 
 //	die();
 
-//Function to return an array object containing all currently active shortcodes. 
+//Function to return an array object containing all currently active shortcodes. (I know, this should really be a class).
 function sc_get_shortcodes(){
 	//Get the WordPress global variable that contains an array of active shortcodes. 
 	global $shortcode_tags;
@@ -126,7 +126,7 @@ function sc_get_best_shortcode($shortcode, $plugin_slug, $slug = 'sc_', $fallbac
 }
 
 
-//The following is an example of how to use this plugin.
+## The following is an example of how to use this plugin. ## 
 function sc_a_safe_shortcode_for_this_plugin(){
 	$sc_our_shortcode = sc_get_best_shortcode('ourshortcode', 'shortcode_checker', 'sc_', 'thesc_');
 	return $sc_our_shortcode;
@@ -144,7 +144,7 @@ add_shortcode($sc_global_shortcode_variable, 'sc_shortcode_of_shortcode');
 
 
 //Add a page for users to view shortcodes. 
-//This is really for the dev process only. Once you've got your site up and running, deactivate this function.
+//This is really for the dev process only. Once you've got your site up and running, you can deactivate this function.
 add_action('admin_menu', 'sc_admin_add_page');
 function sc_admin_add_page() {
 	//Add that options page title, menu item, user capability, the slug to refer to, the output function. 
@@ -156,6 +156,8 @@ function sc_options_page() {
 	global $sc_global_shortcode_variable;
 	?>
 	<div>
+		<h1>Can I create a shortcode named...?</h1>
+			<p>One day we can create an ajax function here, for fun.</p>
 		<h2>A list of all shortcodes currently active on your site.</h2>
 		<?php
 		sc_shortcodes();
@@ -166,4 +168,8 @@ function sc_options_page() {
 	<?php
 	//print_r(sc_a_safe_shortcode_for_this_plugin());
 }
+
+## This ends the example, there's some stuff down here for ajaxery. ##
+
+
 ?>
